@@ -20,8 +20,8 @@ To install this in local server after downloading and extracting the repo.
 
 You can use this app two ways.
 
-1. Simply calling 127.0.0.1/ will return the csv having the 
+1. Simply calling 127.0.0.1:8000/ will return the csv having the 
 json in the link http://receitaws.com.br/v1/cnpj/71021091000190
 
 2. You can pass the "Id" with the url to convert another json having id
-instead of 71021091000190. eg. 127.0.0.1/7102109111111.
+instead of 71021091000190. eg. 127.0.0.1:8000/7102109111111.
