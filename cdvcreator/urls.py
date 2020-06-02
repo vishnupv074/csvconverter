@@ -20,5 +20,5 @@ from master import urls as masterurls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(masterurls)),
+    path('', include(masterurls)),  # Including master urls
 ]
