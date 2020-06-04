@@ -1,18 +1,123 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Imprt File</title>
-</head>
-<body>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Imprt File</title>-->
+<!--</head>-->
+<!--<body>-->
 
-<form method="POST" enctype="multipart/form-data">{% csrf_token %}
-    <input name="file" id="file1" type="file"/>
-    <button type="submit">submit</button>
-</form>
+<!--<form method="POST" enctype="multipart/form-data">{% csrf_token %}-->
+<!--    <input name="file" id="file1" type="file"/>-->
+<!--    <button type="submit">submit</button>-->
+<!--</form>-->
 
-<br>
-<br>
-{{response}}
-</body>
-</html>
+<!--<br>-->
+<!--<br>-->
+<!--{{response}}-->
+<!--</body>-->
+<!--</html>-->
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Arimo);
+
+body {
+   margin: 2em;
+   background: #e4e4e4;
+   font-family: "Arimo",
+      sans-serif;
+   text-align: center;
+}
+
+a {
+  color: blue;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+hr {
+   opacity: .3;
+   margin: 2em 0;
+}
+
+.fileUpload {
+   background: white;
+   padding: 25px;
+   margin: 0 auto;
+}
+
+div#upload {
+   display: inline-block;
+}
+
+input[type="file"] {
+background: #7886d8;
+padding: 15px 11px 18px 20px;
+border-radius: 4px;
+cursor: pointer;
+color: white;
+width: 300px;
+border: 2px solid #3F51B5;
+outline: 0;
+}
+
+ul#preview {
+   list-style: none;
+   margin: 25px auto;
+   padding: 0;
+   display: block;
+   max-width: 600px;
+}
+
+ul#preview li {
+   display: inline-block;
+   margin: 0 10px 10px;
+   max-width: 100px;
+}
+button{
+background-color: #008CBA;
+border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+}
+
+ul#preview li img {
+   width: 100%;
+}
+</style>
+ <div class="fileUpload">
+   <br>
+      <h1>Upload CSV file containing API IDs</h1>
+      <hr>
+     <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+      <div id="upload" class="upload">
+         <input name="file" id="file1" type="file" />
+      </div>
+      <ul id="preview"></ul>
+         <button type="submit">Upload CSV and Download result</button>
+         </form>
+   </div>
+
+<script>
+      // Check HTML5 File API Browser Support
+   if (window.File && window.FileList && window.FileReader) {
+       function showFile() {
+           var preview = document.getElementById("preview");
+           var fileInput = document.querySelector("input[type=file]");
+
+           for (var i = 0; i < fileInput.files.length; i++) {
+               var reader = new FileReader();
+               reader.onload = function(readerEvent) {
+                   var listItem = document.createElement("li");
+                   listItem.innerHTML = "<img src='" + readerEvent.target.result + "' />";
+                   preview.append(listItem);
+               }
+               reader.readAsDataURL(fileInput.files[i]);
+           }
+       }
+   } else {
+       alert("Your browser is too old to support HTML5 File API");
+   }
+</script>
